@@ -8,6 +8,12 @@ let reservation = {
     email: null
 }
 // confirm-reservation-content
+
+// guest-details-form-content
+
+// thank-you-content
+
+// confirm-reservation-content
 function changeContent(className) {
     document.querySelectorAll('.custom-form').forEach(div => div.classList.add('hidden'));
     if( document.querySelector(`.${className}`) != null){
@@ -67,14 +73,14 @@ function findRoom(e) {
 // --------------------------------------------------------------------------
 // Admin functionality
 
-document.querySelector('#guest-details-back-btn').addEventListener('click', (e) => fillRoomForm(e));
+// document.querySelector('#guest-details-back-btn').addEventListener('click', (e) => fillRoomForm(e));
 
 function fillRoomForm(e) {
     e.preventDefault();
     changeContent('search-result-form-content');
 }
 
-document.querySelector('#guest-details-next-btn').addEventListener('click', (e) => getPersonalData(e));
+// document.querySelector('#guest-details-next-btn').addEventListener('click', (e) => getPersonalData(e));
 
 function getPersonalData(e) {
     e.preventDefault();
@@ -101,4 +107,23 @@ function fillConfirmReservationData(customReservation) {
     document.querySelector('.confirm-reservation #guest-room-type').textContent = `Room Type: ${customReservation.roomType}`;
     document.querySelector('.confirm-reservation #guest-data-in').textContent = `Date-in: ${customReservation.startDate}`;
     document.querySelector('.confirm-reservation #guest-data-out').textContent = `Date-out: ${customReservation.endDate}`;
+}
+
+// Verifier functionality
+
+changeContent('confirm-reservation-content')
+
+document.querySelector('#confirm-back-btn').addEventListener('click', (e) => getBackToPersonalData(e));
+
+function getBackToPersonalData(e) {
+    e.preventDefault();
+    changeContent('guest-details-form-content');
+}
+
+
+document.querySelector('#confirm-reservation').addEventListener('click', (e) => showThanksPage(e));
+
+function showThanksPage(e) {
+    e.preventDefault();
+    changeContent('thank-you-content');
 }
